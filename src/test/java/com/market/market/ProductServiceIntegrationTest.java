@@ -10,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
@@ -18,8 +19,9 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest // Levanta el contexto real de Spring Boot e inyecta dependencias reales
-@Transactional   // Hace rollback automático en Postgres al terminar cada test para no dejar basura
-class ProductServiceImplIntegrationTest {
+@Transactional
+@ActiveProfiles("test")// Hace rollback automático en Postgres al terminar cada test para no dejar basura
+class ProductServiceIntegrationTest {
 
     @Autowired
     private ProductService productService; // Inyección del servicio real sin simulaciones
